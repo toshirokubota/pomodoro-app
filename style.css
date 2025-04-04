@@ -22,9 +22,9 @@
   --fs-body2: 0.75rem;
   --fs-link1: clamp(0.5625rem, 0.25rem + 1vw, 1.5rem);
   --fs-link2: 0.5625rem;
-  --fs-body: 0.875rem;
   /* font-families */
   --ff-normal: "Kumbh Sans", serif;
+  --color-timer: var(--color-reddish);
 }
 
 /* ------------------- */
@@ -176,35 +176,45 @@ main > * + * {
 }
 
 .nav-tab {
-  background-color: hsl(var(--color-black)/0.75);
+  background-color: hsl(var(--color-black)/0.25);
   padding: 0.25rem;
-  border-radius: 50%;
+  border-radius: 27px;
 }
-
-.nav-tab > * {
-  border-radius: 50%;
+.nav-tab button {
+  border-radius: 23px;
+  background-color: hsl(var(--color-black)/0.25);
+  color: hsl(var(--color-light-gray)/0.4);
+  padding: 0.5rem 1rem;
+  border-color: transparent;
+}
+.nav-tab button[aria-selected=true] {
+  background-color: hsl(var(--color-timer)/1);
+  color: hsl(var(--color-black));
 }
 
 /* Components */
-.circular-progress {
+.progress-container {
   position: relative;
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  background: conic-gradient(#7d2ae8 0%, 100%, #ededed 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 300px;
+  height: 300px;
 }
 
-.progress-ctrl {
+.progress-ring__circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.progress-label {
   position: absolute;
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  background-color: #fff;
-  outline: none;
-  border-color: transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-label-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: hsl(var(--color-timer));
 }
 
 .circle-button {
@@ -231,6 +241,7 @@ input[type=radio] {
 .setting-button {
   background-color: transparent;
   border: none;
+  margin-block: 4rem;
 }
 
 /* Custom setting pane */
@@ -283,15 +294,14 @@ form {
   gap: 1rem;
   width: 100%;
 }
-
-.setting-card--time > label {
+.setting-card--time label {
   display: flex;
   flex-direction: column;
 }
-.setting-card--time > label > span {
+.setting-card--time label > span {
   color: hsl(var(--color-black)/0.4);
 }
-.setting-card--time > label > input {
+.setting-card--time label > input {
   width: 8.75rem;
 }
 

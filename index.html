@@ -21,15 +21,31 @@
         <img src="./assets/logo.svg" alt="pomodoro logo"/>
       </header>
       <nav class="nav-tab fs-body1">
-        <button>pomodoro</button>
-        <button>short break</button>
-        <button>long break</button>  
+        <button class="font-body1" aria-selected="true">pomodoro</button>
+        <button class="font-body1">short break</button>
+        <button class="font-body1">long break</button>  
       </nav>
     
       <div class="timer">
-        <div id="circular-progress" class="circular-progress">
-          <button id="progress-ctrl" class="progress-ctrl">start</button>
+        <div id="progress-container" class="progress-container">
+          <!-- Hazy Progress circle -->
+          <div class="progress-ring__hazycircle"></div>
+          <svg class="progress-ring" width="120" height="120">
+            <!-- Background circle -->
+            <circle class="progress-ring__background" stroke="#ededed" stroke-width="10" 
+                    stroke-linecap="round" fill="transparent" r="50" cx="60" cy="60"/>
+            <!-- Progress circle -->
+            <circle class="progress-ring__circle" stroke="#7d2ae8" stroke-width="10"  
+                    stroke-linecap="round" fill="transparent" r="50" cx="60" cy="60"/>
+          </svg>
+          <div class="progress-label">
+            <span class="progress-label-text">0%</span>
+            <span id="progress-ctrl" class="progress-ctrl">start</span>
+          </div>
         </div>
+
+        <!-- <div id="circular-progress" class="circular-progress">
+        </div> -->
         <!-- <span>pause</span>
         <span>start</span> 
         <span>restart</span>   -->

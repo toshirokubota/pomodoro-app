@@ -27,10 +27,11 @@ $desktop-break: 1248px; //78rem;
     --fs-body2: 0.75rem;
     --fs-link1: clamp(0.5625rem, 0.25rem + 1vw, 1.5rem);
     --fs-link2: 0.5625rem;
-    --fs-body: 0.875rem;
     
     /* font-families */
     --ff-normal: "Kumbh Sans", serif; //Roboto Slab, Space Mono
+
+    --color-timer: var(--color-reddish);
     //scroll-behavior: smooth;
 }
 
@@ -187,40 +188,76 @@ main > * + * {
 }
 
 .nav-tab {
-    background-color: hsl(var(--color-black) / 0.75);
+    background-color: hsl(var(--color-black) / 0.25);
     padding: 0.25rem;
-    border-radius: 50%;
+    border-radius: 27px;
+
+    button {
+        border-radius: 23px;
+        background-color: hsl(var(--color-black) / 0.25);
+        color: hsl(var(--color-light-gray) / 0.4);
+        padding: 0.5rem 1rem;
+        border-color: transparent;    
+    }
+    button[aria-selected="true"] {
+        background-color: hsl(var(--color-timer) / 1);
+        color: hsl(var(--color-black));
+    }
 }
 .nav-tab > * {
-    border-radius: 50%;
 }
 /* Components */
-.circular-progress {
-    position: relative;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background: conic-gradient(#7d2ae8 0%, 100%, #ededed 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-// .circular-progress::before {
-//     content: "";
+// .circular-progress {
+//     position: relative;
+//     height: 150px;
+//     width: 150px;
+//     border-radius: 50%;
+//     background: conic-gradient(#7d2ae8 0%, 100%, #ededed 100%);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+// // .circular-progress::before {
+// //     content: "";
+// //     position:absolute;
+// //     height: 120px;
+// //     width: 120px;
+// //     border-radius: 50%;
+// //     background-color: #fff;
+// // }
+// .progress-ctrl {
 //     position:absolute;
 //     height: 120px;
 //     width: 120px;
 //     border-radius: 50%;
 //     background-color: #fff;
+//     outline: none;
+//     border-color: transparent;
 // }
-.progress-ctrl {
-    position:absolute;
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    background-color: #fff;
-    outline: none;
-    border-color: transparent;
+
+.progress-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    // box-shadow: -20px -20px 30px 20px hsl(var(--color-light-gray));
+}
+  
+.progress-ring__circle {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    //transition: stroke-dashoffset 0.5s ease-out;
+}
+
+.progress-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.progress-label-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: hsl(var(--color-timer));
 }
 
 .circle-button {
@@ -245,6 +282,7 @@ input[type="radio"]{
 .setting-button {
     background-color: transparent;
     border: none;
+    margin-block: 4rem;
 }
 
 /* Custom setting pane */
@@ -299,18 +337,19 @@ form {
     align-items: center;
     gap: 1rem;
     width: 100%;
+    
+    label {
+        display: flex;
+        flex-direction: column;
+        & > span {
+            color: hsl(var(--color-black) / 0.4);
+        }
+        & > input {
+            width: 8.75rem;
+        }    
+    }
 }
 
-.setting-card--time > label {
-    display: flex;
-    flex-direction: column;
-    & > span {
-        color: hsl(var(--color-black) / 0.4);
-    }
-    & > input {
-        width: 8.75rem;
-    }
-}
 .setting-card--font, .setting-card--color {
     display: flex;
     flex-direction: row;
