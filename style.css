@@ -1,0 +1,312 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+/* media query break points */
+:root {
+  /* colors */
+  --color-black: 0 0% 0%;
+  --color-reddish: 0 91% 71%;
+  --color-cyan: 182 91% 71%;
+  --color-purple: 284 89% 71%;
+  --color-light-blue: 227 100% 92%;
+  --color-mild-blue: 235 35% 18%;
+  --color-faded-blue: 234 39% 14%;
+  --color-light-gray: 229 52% 96%;
+  --color-white: 0 0% 100%;
+  /* font-sizes */
+  --fs-heading1: 100px;
+  --fs-heading2: 1.75rem;
+  --fs-heading3: 1rem;
+  --fs-heading4: 0.8125rem;
+  --fs-body1: 0.875rem;
+  --fs-body2: 0.75rem;
+  --fs-link1: clamp(0.5625rem, 0.25rem + 1vw, 1.5rem);
+  --fs-link2: 0.5625rem;
+  --fs-body: 0.875rem;
+  /* font-families */
+  --ff-normal: "Kumbh Sans", serif;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* make images easier to work with */
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul, ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ------------------- */
+/* Utility             */
+/* ------------------- */
+.font-heading1 {
+  font-family: var(--ff-normal);
+  font-size: var(--fs-heading1);
+  line-height: 120px;
+  letter-spacing: -5px;
+  font-weight: bold;
+}
+
+.font-heading2 {
+  font-family: var(--ff-normal);
+  font-size: var(--fs-heading2);
+  line-height: 120%;
+  font-weight: bold;
+}
+
+.font-heading3 {
+  font-family: var(--ff-normal);
+  font-size: var(--fs-heading3);
+  line-height: 119%;
+  font-weight: bold;
+  letter-spacing: 15px;
+}
+
+.font-heading4 {
+  font-family: var(--ff-normal);
+  font-size: var(--fs-heading4);
+  line-height: 123%;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.font-body1 {
+  font-family: var(--ff-normal);
+  font-size: var(--fs-body);
+  line-height: 128%;
+  font-weight: bold;
+}
+
+.font-body2 {
+  font-family: var(--ff-normal);
+  font-size: var(--fs-body);
+  line-height: 117%;
+  font-weight: bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* set up the body */
+body {
+  font-family: var(--ff-normal);
+  background-color: hsl(var(--color-white));
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* set up the main */
+main {
+  max-width: 600px;
+  background-color: hsl(var(--color-faded-blue));
+  padding: 1.5rem;
+  border-radius: 1rem;
+  color: hsl(var(--color-white));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main > * + * {
+  margin-top: 1rem;
+}
+
+.nav-tab {
+  background-color: hsl(var(--color-black)/0.75);
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+.nav-tab > * {
+  border-radius: 50%;
+}
+
+/* Components */
+.circular-progress {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: conic-gradient(#7d2ae8 0%, 100%, #ededed 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-ctrl {
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: #fff;
+  outline: none;
+  border-color: transparent;
+}
+
+.circle-button {
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  border: solid 1pt hsl(var(--color-black)/0.25);
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.circle-button > *:hover,
+.circle-button > *:focus {
+  border-color: hsl(var(--color-black));
+}
+
+.setting-button {
+  background-color: transparent;
+  border: none;
+}
+
+/* Custom setting pane */
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  padding: 1rem;
+  background-color: hsl(var(--color-light-gray));
+  color: hsl(var(--color-black));
+}
+
+.settings--header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
+
+form {
+  width: 100%;
+}
+
+.setting-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 2rem;
+  padding-top: 1rem;
+  border-top: solid 1pt hsla(var(--color-black)/0.15);
+}
+
+.setting-card:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.setting-card:first-child h1 {
+  margin-bottom: 1rem;
+}
+
+.setting-card--time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.setting-card--time > label {
+  display: flex;
+  flex-direction: column;
+}
+.setting-card--time > label > span {
+  color: hsl(var(--color-black)/0.4);
+}
+.setting-card--time > label > input {
+  width: 8.75rem;
+}
+
+.setting-card--font, .setting-card--color {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.setting-card--font label[aria-selected=true] {
+  background-color: hsl(var(--color-black)/1);
+  color: hsl(var(--color-white));
+}
+
+.setting-card--color label[aria-selected=true]::after {
+  content: "x";
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Roboto+Slab:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="index.js" defer></script>
+    
+    <title>Frontend Mentor | Pomodoro app</title>
+  </head>
+
+  <body>
+    <main>
+      <header class="text-center">
+        <img src="./assets/logo.svg" alt="pomodoro logo"/>
+      </header>
+      <nav class="nav-tab fs-body1">
+        <button>pomodoro</button>
+        <button>short break</button>
+        <button>long break</button>  
+      </nav>
+    
+      <div class="timer">
+        <div id="circular-progress" class="circular-progress">
+          <button id="progress-ctrl" class="progress-ctrl">start</button>
+        </div>
+        <!-- <span>pause</span>
+        <span>start</span> 
+        <span>restart</span>   -->
+      </div>
+    
+      <button class="setting-button">
+        <img src="./assets/icon-settings.svg" alt="setting icon"/>
+      </button>
+    
+      <div class="settings">
+        <header class="settings--header">
+          <span class="font-heading2">Setting</span>
+          <div>
+            <img src="./assets/icon-close.svg" alt="close icon"/>
+          </div>
+        </header>
+        <form>
+          <div class="setting-card">
+            <h1 class="font-heading4 uppercase">Time (minutes)</h1>
+            <div class="setting-card--time">
+              <label for="pomodoro">
+                <span class="font-body2">pomodoro</span>
+                <input type="number" id="pomodoro" name="pomodoro" min="1" max="60" step="1" value="25">
+              </label>
+              <label for="shoft-break">
+                <span class="font-body2">short break</span>
+                <input type="number" id="shoft-break" name="shoft-break" min="1" max="30" step="1" value="5">
+              </label>
+              <label for="long-break">
+                <span class="font-body2">long break</span>
+                <input type="number" id="long-break" name="long-break" min="1" max="30" step="1" value="15">
+              </label>  
+            </div>
+          </div>
+          <div class="setting-card">
+            <h1 class="font-heading4 uppercase">Font</h1>
+            <div class="setting-card--font">
+              <label for="font-choice1" class="circle-button" style="font-family: 'Kumbh Sans', serif;" aria-selected="true">
+                <input type="radio" id="font-choice1" name="font-choice">
+                Aa
+              </label>
+              <label for="font-choice2" class="circle-button" style="font-family: 'Robot Slab', serif;">
+                <input type="radio" id="font-choice2" name="font-choice">
+                Aa
+              </label>
+              <label for="font-choice3" class="circle-button" style="font-family: 'Space Mono', serif;">
+                <input type="radio" id="font-choice3" name="font-choice">
+                Aa
+              </label>
+            </div>
+          </div>
+          <div class="setting-card">
+            <h1 class="font-heading4 uppercase">Color</h1>
+            <div  class="setting-card--color">
+              <label for="color-choice1" class="circle-button" style="background-color: hsl(var(--color-reddish));"  aria-selected="true">
+                <input type="radio" id="color-choice1" name="color-choice">
+              </label>
+              <label for="color-choice2" class="circle-button" style="background-color: hsl(var(--color-cyan));">
+                <input type="radio" id="color-choice2" name="color-choice">
+              </label>
+              <label for="color-choice3" class="circle-button" style="background-color: hsl(var(--color-purple));">
+                <input type="radio" id="color-choice3" name="color-choice">
+              </label>
+            </div>
+          </div>        
+          <input type="submit" id="submit" value="Apply"></input>    
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
