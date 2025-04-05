@@ -30,17 +30,17 @@
         <div id="progress-container" class="progress-container">
           <!-- Hazy Progress circle -->
           <div class="progress-ring__hazycircle"></div>
-          <svg class="progress-ring" width="120" height="120">
+          <svg class="progress-ring">
             <!-- Background circle -->
-            <circle class="progress-ring__background" stroke="#ededed" stroke-width="10" 
-                    stroke-linecap="round" fill="transparent" r="50" cx="60" cy="60"/>
+            <circle class="progress-ring__background" stroke-width="10" 
+                    stroke-linecap="round" fill="transparent"/>
             <!-- Progress circle -->
-            <circle class="progress-ring__circle" stroke="#7d2ae8" stroke-width="10"  
-                    stroke-linecap="round" fill="transparent" r="50" cx="60" cy="60"/>
+            <circle class="progress-ring__circle" stroke-width="10"  
+                    stroke-linecap="round" fill="transparent" r="150" cx="150" cy="150"/>
           </svg>
           <div class="progress-label">
-            <span class="progress-label-text">0%</span>
-            <span id="progress-ctrl" class="progress-ctrl">start</span>
+            <span class="progress-label-perc">0%</span>
+            <span class="progress-label-command">start</span>
           </div>
         </div>
 
@@ -68,15 +68,33 @@
             <div class="setting-card--time">
               <label for="pomodoro">
                 <span class="font-body2">pomodoro</span>
-                <input type="number" id="pomodoro" name="pomodoro" min="1" max="60" step="1" value="25">
+                <div class="custom-number-input flex">
+                  <input type="number" id="pomodoro" name="pomodoro" min="1" max="60" step="1" value="25">
+                  <div class="updown-buttons">
+                    <img src="./assets/icon-arrow-up.svg" alt=""/>
+                    <img src="./assets/icon-arrow-down.svg" alt=""/>
+                  </div>
+                </div>
               </label>
               <label for="shoft-break">
                 <span class="font-body2">short break</span>
-                <input type="number" id="shoft-break" name="shoft-break" min="1" max="30" step="1" value="5">
+                <div  class="custom-number-input flex">
+                  <input type="number" id="shoft-break" name="shoft-break" min="1" max="30" step="1" value="5">
+                  <div class="updown-buttons">
+                    <img src="./assets/icon-arrow-up.svg" alt=""/>
+                    <img src="./assets/icon-arrow-down.svg" alt=""/>
+                  </div>
+                </div>
               </label>
               <label for="long-break">
                 <span class="font-body2">long break</span>
-                <input type="number" id="long-break" name="long-break" min="1" max="30" step="1" value="15">
+                <div  class="custom-number-input flex">
+                  <input type="number" id="long-break" name="long-break" min="1" max="30" step="1" value="15">
+                  <div class="updown-buttons">
+                    <img src="./assets/icon-arrow-up.svg" alt=""/>
+                    <img src="./assets/icon-arrow-down.svg" alt=""/>
+                  </div>
+                </div>
               </label>  
             </div>
           </div>
@@ -100,13 +118,13 @@
           <div class="setting-card">
             <h1 class="font-heading4 uppercase">Color</h1>
             <div  class="setting-card--color">
-              <label for="color-choice1" class="circle-button" style="background-color: hsl(var(--color-reddish));"  aria-selected="true">
+              <label for="color-choice1" class="circle-button checkmarked" style="background-color: hsl(var(--color-reddish));"  aria-selected="true">
                 <input type="radio" id="color-choice1" name="color-choice">
               </label>
-              <label for="color-choice2" class="circle-button" style="background-color: hsl(var(--color-cyan));">
+              <label for="color-choice2" class="circle-button checkmarked" style="background-color: hsl(var(--color-cyan));">
                 <input type="radio" id="color-choice2" name="color-choice">
               </label>
-              <label for="color-choice3" class="circle-button" style="background-color: hsl(var(--color-purple));">
+              <label for="color-choice3" class="circle-button checkmarked" style="background-color: hsl(var(--color-purple));">
                 <input type="radio" id="color-choice3" name="color-choice">
               </label>
             </div>

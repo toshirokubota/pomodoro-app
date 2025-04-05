@@ -146,6 +146,14 @@ a {
   text-align: center;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
 /* set up the body */
 body {
   font-family: var(--ff-normal);
@@ -193,15 +201,70 @@ main > * + * {
 }
 
 /* Components */
+.updown-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  left: -1rem;
+  width: 1rem;
+}
+
+.custom-number-input {
+  margin-right: -1rem;
+}
+
 .progress-container {
   position: relative;
   width: 300px;
   height: 300px;
+  margin-top: 3rem;
+}
+
+.progress-ring__hazycircle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  box-shadow: -8px -8px 8px 0 hsl(var(--color-black)/0.25);
+}
+
+.progress-ring__hazycircle::before {
+  content: "";
+  position: absolute;
+  height: 280px;
+  width: 280px;
+  border-radius: 50%;
+  background-color: hsl(var(--color-faded-blue));
+}
+
+.progress-ring {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  z-index: 2;
+}
+
+.progress-ring__background {
+  stroke: transparent;
+  r: 125px;
+  cx: 150px;
+  cy: 150px;
 }
 
 .progress-ring__circle {
+  r: 125px;
+  cx: 150px;
+  cy: 150px;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
+  stroke: hsl(var(--color-timer));
 }
 
 .progress-label {
@@ -209,9 +272,16 @@ main > * + * {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
-.progress-label-text {
+.progress-label-perc {
+  font-size: 20px;
+  font-weight: bold;
+  color: hsl(var(--color-timer));
+}
+
+.progress-label-command {
   font-size: 20px;
   font-weight: bold;
   color: hsl(var(--color-timer));
@@ -266,6 +336,9 @@ input[type=radio] {
 form {
   width: 100%;
 }
+form input[type=submit] {
+  background-color: hsl(var(--color-timer));
+}
 
 .setting-card {
   display: flex;
@@ -289,7 +362,7 @@ form {
 .setting-card--time {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   width: 100%;
@@ -298,11 +371,18 @@ form {
   display: flex;
   flex-direction: column;
 }
-.setting-card--time label > span {
+.setting-card--time label span {
   color: hsl(var(--color-black)/0.4);
+  margin-bottom: 0.5rem;
 }
-.setting-card--time label > input {
+.setting-card--time label input {
   width: 8.75rem;
+}
+
+.custom-number-input input {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
 }
 
 .setting-card--font, .setting-card--color {
@@ -317,6 +397,24 @@ form {
   color: hsl(var(--color-white));
 }
 
-.setting-card--color label[aria-selected=true]::after {
-  content: "x";
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmarked {
+  position: relative;
+}
+.checkmarked::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: calc(50% - 5px);
+  top: calc(50% - 8px);
+  width: 10px;
+  height: 16px;
+  border: solid hsl(var(--color-black)/1);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.checkmarked[aria-selected=true]::after {
+  display: block;
 }/*# sourceMappingURL=style.css.map */
