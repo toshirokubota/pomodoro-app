@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="--ff-normal: 'Kumbh Sans', serif; --color-timer: hsl(0 91% 71%)">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,12 +43,6 @@
             <span class="progress-label-command">start</span>
           </div>
         </div>
-
-        <!-- <div id="circular-progress" class="circular-progress">
-        </div> -->
-        <!-- <span>pause</span>
-        <span>start</span> 
-        <span>restart</span>   -->
       </div>
     
       <button class="setting-button">
@@ -62,7 +56,7 @@
             <img src="./assets/icon-close.svg" alt="close icon"/>
           </div>
         </header>
-        <form>
+        <form id="form">
           <div class="setting-card">
             <h1 class="font-heading4 uppercase">Time (minutes)</h1>
             <div class="setting-card--time">
@@ -76,10 +70,10 @@
                   </div>
                 </div>
               </label>
-              <label for="shoft-break">
+              <label for="short-break">
                 <span class="font-body2">short break</span>
                 <div  class="custom-number-input flex">
-                  <input type="number" id="shoft-break" name="shoft-break" min="1" max="30" step="1" value="5">
+                  <input type="number" id="short-break" name="short-break" min="1" max="30" step="1" value="5">
                   <div class="updown-buttons">
                     <img src="./assets/icon-arrow-up.svg" alt=""/>
                     <img src="./assets/icon-arrow-down.svg" alt=""/>
@@ -101,8 +95,8 @@
           <div class="setting-card">
             <h1 class="font-heading4 uppercase">Font</h1>
             <div class="setting-card--font">
-              <label for="font-choice1" class="circle-button" style="font-family: 'Kumbh Sans', serif;" aria-selected="true">
-                <input type="radio" id="font-choice1" name="font-choice">
+              <label for="font-choice1" class="circle-button active" style="font-family: 'Kumbh Sans', serif;">
+                <input type="radio" id="font-choice1" name="font-choice" checked>
                 Aa
               </label>
               <label for="font-choice2" class="circle-button" style="font-family: 'Robot Slab', serif;">
@@ -118,13 +112,13 @@
           <div class="setting-card">
             <h1 class="font-heading4 uppercase">Color</h1>
             <div  class="setting-card--color">
-              <label for="color-choice1" class="circle-button checkmarked" style="background-color: hsl(var(--color-reddish));"  aria-selected="true">
-                <input type="radio" id="color-choice1" name="color-choice">
+              <label for="color-choice1" class="circle-button checkmarked active" style="background-color: hsl(0 91% 71%);">
+                <input type="radio" id="color-choice1" name="color-choice" checked>
               </label>
-              <label for="color-choice2" class="circle-button checkmarked" style="background-color: hsl(var(--color-cyan));">
+              <label for="color-choice2" class="circle-button checkmarked" style="background-color: hsl(182 91% 71%);">
                 <input type="radio" id="color-choice2" name="color-choice">
               </label>
-              <label for="color-choice3" class="circle-button checkmarked" style="background-color: hsl(var(--color-purple));">
+              <label for="color-choice3" class="circle-button checkmarked" style="background-color: hsl(284 89% 71%);">
                 <input type="radio" id="color-choice3" name="color-choice">
               </label>
             </div>

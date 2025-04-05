@@ -29,10 +29,12 @@ $desktop-break: 1248px; //78rem;
     --fs-link2: 0.5625rem;
     
     /* font-families */
-    --ff-normal: "Kumbh Sans", serif; //Roboto Slab, Space Mono
+    //--ff-normal: "Kumbh Sans", serif; //Roboto Slab, Space Mono
 
-    --color-timer: var(--color-reddish);
+    //--color-timer: var(--color-reddish);
     //scroll-behavior: smooth;
+
+    font-family: var(--ff-normal);
 }
 
 /* ------------------- */
@@ -112,40 +114,40 @@ a {
 /* ------------------- */
 
 .font-heading1 {
-    font-family: var(--ff-normal);
+    // font-family: var(--ff-normal);
     font-size: var(--fs-heading1);
     line-height: 120px;
     letter-spacing: -5px;
     font-weight: bold;
 }
 .font-heading2 {
-    font-family: var(--ff-normal);
+    // font-family: var(--ff-normal);
     font-size: var(--fs-heading2);
     line-height: 120%;
     font-weight: bold;
 }
 .font-heading3 {
-    font-family: var(--ff-normal);
+    // font-family: var(--ff-normal);
     font-size: var(--fs-heading3);
     line-height: 119%;
     font-weight: bold;
     letter-spacing: 15px;
 }
 .font-heading4 {
-    font-family: var(--ff-normal);
+    // font-family: var(--ff-normal);
     font-size: var(--fs-heading4);
     line-height: 123%;
     font-weight: bold;
     letter-spacing: 5px;
 }
 .font-body1 {
-    font-family: var(--ff-normal);
+    // font-family: var(--ff-normal);
     font-size: var(--fs-body);
     line-height: 128%;
     font-weight: bold;
 }
 .font-body2 {
-    font-family: var(--ff-normal);
+    // font-family: var(--ff-normal);
     font-size: var(--fs-body);
     line-height: 117%;
     font-weight: bold;
@@ -207,12 +209,10 @@ main > * + * {
         border-color: transparent;    
     }
     button[aria-selected="true"] {
-        background-color: hsl(var(--color-timer) / 1);
+        background-color: var(--color-timer);
         color: hsl(var(--color-black));
     }
 }
-// .nav-tab > * {
-// }
 
 /* Components */
 .updown-buttons {
@@ -228,24 +228,7 @@ main > * + * {
     margin-right: -1rem;
 }
 
-// .circular-progress::before {
-//     content: "";
-//     position:absolute;
-//     height: 120px;
-//     width: 120px;
-//     border-radius: 50%;
-//     background-color: #fff;
-// }
-// .progress-ctrl {
-//     position:absolute;
-//     height: 120px;
-//     width: 120px;
-//     border-radius: 50%;
-//     background-color: #fff;
-//     outline: none;
-//     border-color: transparent;
-// }
-
+//circular progress bar
 .progress-container {
     position: relative;
     width: 300px;
@@ -295,10 +278,9 @@ main > * + * {
 
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
-    stroke: hsl(var(--color-timer));
+    stroke: var(--color-timer);
     //transition: stroke-dashoffset 0.5s ease-out;
 }
-
 .progress-label {
     position: absolute;
     top: 50%;
@@ -309,14 +291,15 @@ main > * + * {
 .progress-label-perc {
     font-size: 20px;
     font-weight: bold;
-    color: hsl(var(--color-timer));
+    color: var(--color-timer);
 }
 .progress-label-command {
     font-size: 20px;
     font-weight: bold;
-    color: hsl(var(--color-timer));
+    color: var(--color-timer);
 }
 
+//circular shaped button
 .circle-button {
     display: grid;
     place-content: center;
@@ -325,21 +308,27 @@ main > * + * {
     width: 40px;
     aspect-ratio: 1;
     border-radius: 50%;
-}
-input[type="radio"]{
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-.circle-button > *:hover,
-.circle-button > *:focus { 
-    border-color: hsl( var(--color-black));
+
+    input[type="radio"]{
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    &:hover,
+    &:focus { 
+        border-color: hsl( var(--color-black));
+    }
 }
 
+/* configuration setting button */
 .setting-button {
     background-color: transparent;
     border: none;
     margin-block: 4rem;
+    &:hover,
+    &:focus { 
+        cursor: pointer;
+    }
 }
 
 /* Custom setting pane */
@@ -360,17 +349,24 @@ input[type="radio"]{
     justify-content: space-between;
     align-items: baseline;
     width: 100%;
-    // img {
-    //     width: 14px;
-    //     aspect-ratio: 1;
-    // }
 }
 
 form {
     width: 100%;
-
+    position: relative;
     input[type="submit"] {
-        background-color: hsl(var(--color-timer));
+        background-color: var(--color-timer);
+        color: hsl(var(--color-white));
+        padding: 0.25rem 1.5rem;
+        border-radius: 23px;
+        border-color: transparent;
+        position: absolute;
+        bottom: -2rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    input[type="submit"]:hover, input[type="submit"]:focus {
+        cursor: pointer;
     }
 }
 .setting-card {
@@ -454,7 +450,7 @@ form {
 }
 
 .setting-card--font {
-    label[aria-selected="true"] {
+    label.active {
         background-color: hsl( var(--color-black) / 1); 
         color: hsl( var(--color-white) );
     }    
@@ -478,7 +474,7 @@ form {
             -ms-transform: rotate(45deg);
             transform: rotate(45deg);
         }
-        &[aria-selected="true"]::after {
+        &.active::after {
             display: block;
         }    
     }

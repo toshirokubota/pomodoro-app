@@ -23,8 +23,7 @@
   --fs-link1: clamp(0.5625rem, 0.25rem + 1vw, 1.5rem);
   --fs-link2: 0.5625rem;
   /* font-families */
-  --ff-normal: "Kumbh Sans", serif;
-  --color-timer: var(--color-reddish);
+  font-family: var(--ff-normal);
 }
 
 /* ------------------- */
@@ -94,7 +93,6 @@ a {
 /* Utility             */
 /* ------------------- */
 .font-heading1 {
-  font-family: var(--ff-normal);
   font-size: var(--fs-heading1);
   line-height: 120px;
   letter-spacing: -5px;
@@ -102,14 +100,12 @@ a {
 }
 
 .font-heading2 {
-  font-family: var(--ff-normal);
   font-size: var(--fs-heading2);
   line-height: 120%;
   font-weight: bold;
 }
 
 .font-heading3 {
-  font-family: var(--ff-normal);
   font-size: var(--fs-heading3);
   line-height: 119%;
   font-weight: bold;
@@ -117,7 +113,6 @@ a {
 }
 
 .font-heading4 {
-  font-family: var(--ff-normal);
   font-size: var(--fs-heading4);
   line-height: 123%;
   font-weight: bold;
@@ -125,14 +120,12 @@ a {
 }
 
 .font-body1 {
-  font-family: var(--ff-normal);
   font-size: var(--fs-body);
   line-height: 128%;
   font-weight: bold;
 }
 
 .font-body2 {
-  font-family: var(--ff-normal);
   font-size: var(--fs-body);
   line-height: 117%;
   font-weight: bold;
@@ -196,7 +189,7 @@ main > * + * {
   border-color: transparent;
 }
 .nav-tab button[aria-selected=true] {
-  background-color: hsl(var(--color-timer)/1);
+  background-color: var(--color-timer);
   color: hsl(var(--color-black));
 }
 
@@ -264,7 +257,7 @@ main > * + * {
   cy: 150px;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
-  stroke: hsl(var(--color-timer));
+  stroke: var(--color-timer);
 }
 
 .progress-label {
@@ -278,13 +271,13 @@ main > * + * {
 .progress-label-perc {
   font-size: 20px;
   font-weight: bold;
-  color: hsl(var(--color-timer));
+  color: var(--color-timer);
 }
 
 .progress-label-command {
   font-size: 20px;
   font-weight: bold;
-  color: hsl(var(--color-timer));
+  color: var(--color-timer);
 }
 
 .circle-button {
@@ -296,22 +289,23 @@ main > * + * {
   aspect-ratio: 1;
   border-radius: 50%;
 }
-
-input[type=radio] {
+.circle-button input[type=radio] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
-.circle-button > *:hover,
-.circle-button > *:focus {
+.circle-button:hover, .circle-button:focus {
   border-color: hsl(var(--color-black));
 }
 
+/* configuration setting button */
 .setting-button {
   background-color: transparent;
   border: none;
   margin-block: 4rem;
+}
+.setting-button:hover, .setting-button:focus {
+  cursor: pointer;
 }
 
 /* Custom setting pane */
@@ -335,9 +329,21 @@ input[type=radio] {
 
 form {
   width: 100%;
+  position: relative;
 }
 form input[type=submit] {
-  background-color: hsl(var(--color-timer));
+  background-color: var(--color-timer);
+  color: hsl(var(--color-white));
+  padding: 0.25rem 1.5rem;
+  border-radius: 23px;
+  border-color: transparent;
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+form input[type=submit]:hover, form input[type=submit]:focus {
+  cursor: pointer;
 }
 
 .setting-card {
@@ -392,7 +398,7 @@ form input[type=submit] {
   gap: 0.5rem;
 }
 
-.setting-card--font label[aria-selected=true] {
+.setting-card--font label.active {
   background-color: hsl(var(--color-black)/1);
   color: hsl(var(--color-white));
 }
@@ -415,6 +421,6 @@ form input[type=submit] {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.checkmarked[aria-selected=true]::after {
+.checkmarked.active::after {
   display: block;
 }/*# sourceMappingURL=style.css.map */
