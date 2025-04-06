@@ -171,17 +171,6 @@ function setProgress(seconds) {
   circle2.style.background = `conic-gradient(from ${aoffset}deg, #2E325A 0deg, #0E112A ${aoffset}deg, #0E112A 180deg, #0E112A ${360-aoffset}deg, #2E325A 360deg)`;
 }
 
-// const startTimer = (timer_name) => {
-//   let seconds = intervals[timer_name] * 60;
-//   if(timerCommand.innerText == 'start' || timerCommand.innerText == 'restart') {
-//     timerCommand.innerText = 'pause'
-//     setProgress(seconds);
-//     if(interval_in_sec > 0) {
-//       setTimeout(setProgress, 1000, seconds);
-//     }
-//   }
-// }
-
 let intervalId;
 let time_left = interval_seconds;
 progress.addEventListener('click', ()=> {
@@ -193,9 +182,8 @@ progress.addEventListener('click', ()=> {
       time_left = interval_seconds;
     }
     timerCommand.innerText = 'pause'
-    intervalId = setInterval(function update() {
-      //progress_bar.style.background = `conic-gradient(#7d2ae8 0%, ${perc}%, #ededed ${perc}%)`;
-      //console.log(time_left);
+
+    function update() {
       let perc = time_left * 100 / interval_seconds;
       setProgress(time_left);
       if(time_left <= 0) {
@@ -204,11 +192,13 @@ progress.addEventListener('click', ()=> {
           timerCommand.innerText = 'start'
           console.log('Done!');
       } else {
-          //console.log(time_left, `conic-gradient(#7d2ae8 0%, ${perc}%, #ededed ${perc}%)`);
           time_left --;
       }
-      return update;
-    }(), 1000);
+      return update; //return the function itself
+    }
+
+    intervalId = setInterval(update(), //run once immediately and then used as a callback
+        1000);
   } else {
     timerCommand.innerText = 'restart';
     clearInterval(intervalId);
