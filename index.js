@@ -127,8 +127,6 @@ form.addEventListener('submit', (e) => {
   }
   setting_dialog.setAttribute('aria-hidden', true);
   e.preventDefault();
-  // console.log(intervals, root.style);
-  //console.log(intervals, root.style.getPropertyValue('--font-normal'), root.style.getPropertyValue('--color-timer'));
 });
 
 
@@ -197,16 +195,13 @@ progress.addEventListener('click', ()=> {
       return update; //return the function itself
     }
 
-    intervalId = setInterval(update(), //run once immediately and then used as a callback
+    intervalId = setInterval(update(), //run it once immediately and then use it as a callback
         1000);
   } else {
     timerCommand.innerText = 'restart';
     clearInterval(intervalId);
   }
 });
-
-// Example: Set to 65%
-//setProgress(100);
 
 /***************************************************/
 /* Configuration setting open/close                */
